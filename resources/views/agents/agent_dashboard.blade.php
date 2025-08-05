@@ -497,9 +497,9 @@ $recentBookings = [
             
             // Load hotels data when manage-hotels section is shown
             if (idx === 2) { // Index for manage-hotels section
-                setTimeout(() => {
-                    loadHotels();
-                }, 100);
+                // setTimeout(() => {
+                //     loadHotels();
+                // }, 100);
             }
         }
 
@@ -634,22 +634,24 @@ $recentBookings = [
         
         // Load hotels on page load (only if manage-hotels section is visible)
         if (document.querySelector('#manage-hotels').style.display !== 'none') {
-            loadHotels();
+            // loadHotels();
         }
         
         searchInput.addEventListener('input', function(e) {
-            loadHotels();
+            // loadHotels();
         });
         
         ratingFilter.addEventListener('change', function(e) {
-            loadHotels();
+            // loadHotels();
         });
+
         
         function loadHotels() {
+            let base_url="{{  url('') }}";
             const searchTerm = searchInput.value;
             const rating = ratingFilter.value;
             hotelsGrid.innerHTML = '<div class="loading">Loading...</div>';
-            fetch(`get_hotels.php?search=${encodeURIComponent(searchTerm)}&rating=${encodeURIComponent(rating)}`)
+            fetch(`${base_url}/admin/agent/dashboard/data`)
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok');
                     return response.json();
@@ -687,22 +689,7 @@ $recentBookings = [
                             ${'★'.repeat(hotel.rating)}${'☆'.repeat(5-hotel.rating)}
                         </div>
                     </div>
-                    <div class="hotel-info">
-                        <h3>${hotel.name}</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> ${hotel.location}</p>
-                        <p class="hotel-description">${hotel.description.substring(0, 100)}${hotel.description.length > 100 ? '...' : ''}</p>
-                        <div class="hotel-actions">
-                            <button class="btn-action" onclick="editHotel('${hotel.id}')">
-                                <i class="fas fa-edit"></i> Edit
-                            </button>
-                            <button class="btn-action" onclick="viewHotel('${hotel.id}')">
-                                <i class="fas fa-eye"></i> Lihat
-                            </button>
-                            <button class="btn-action delete" onclick="deleteHotel('${hotel.id}')">
-                                <i class="fas fa-trash"></i> Hapus
-                            </button>
-                        </div>
-                    </div>
+                   
                 </div>
             `).join('');
             
@@ -773,7 +760,7 @@ $recentBookings = [
                 .then(data => {
                     if (data.success) {
                         showMessage('<i class="fas fa-check-circle"></i> ' + data.message, 'success');
-                        loadHotels();
+                        // loadHotels();
                     } else {
                         showMessage('<i class="fas fa-exclamation-circle"></i> ' + data.message, 'error');
                     }
@@ -1033,7 +1020,7 @@ $recentBookings = [
                         document.getElementById('editFormMessage').innerHTML = '<span class="success">' + data.message + '</span>';
                         setTimeout(() => {
                             bootstrap.Modal.getInstance(document.getElementById('editHotelModal')).hide();
-                            loadHotels();
+                            // loadHotels();
                         }, 1200);
                     } else {
                         document.getElementById('editFormMessage').innerHTML = '<span class="error">' + data.message + '</span>';

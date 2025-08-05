@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HotelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -30,22 +31,18 @@ Route::post('/customer/login', [LoginController::class, 'login'])->name('custome
 
 
 // Agent View
-Route::get('/agent/dashboard', function () {
-    return view('agents.agent_dashboard'); // pastikan ada file resources/views/profile.blade.php
-})->name('agent-dashboard');
+// Route::get('/agent/dashboard', function () {
+//     return view('agents.agent_dashboard'); // pastikan ada file resources/views/profile.blade.php
+// })->name('agent-dashboard');
+Route::get('admin/agent/dashboard/data', [HotelController::class, 'getAllData']);
+Route::resource('admin/agent/dashboard', HotelController::class);
+
 
 Route::get('/register/agent', [RegisterController::class, 'showAgentForm'])->name('agent-register');
 Route::post('/register/agent', [RegisterController::class, 'registerAgent']);
 
 Route::get('/agent/login', [LoginController::class, 'showAgentLoginForm'])->name('agent-login');
 Route::post('/agent/login', [LoginController::class, 'login'])->name('agent-login.post');
-
-
-
-
-
-
-
 
 
 // Main View
@@ -93,9 +90,7 @@ Route::get('/properties', function () {
     return view('main.properties'); // pastikan ada file resources/views/profile.blade.php
 })->name('properties');
 
-Route::get('admin/properties', function () {
-    return view('admin.admin_properties'); // pastikan ada file resources/views/profile.blade.php
-})->name('admin-properties');
+Route::get('admin/properties',)->name('admin-properties');
 
 Route::get('admin/location', function () {
     return view('admin.location'); // pastikan ada file resources/views/profile.blade.php

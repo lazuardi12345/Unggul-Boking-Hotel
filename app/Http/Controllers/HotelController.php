@@ -12,12 +12,16 @@ class HotelController extends Controller
     // GET /api/hotels
     public function index()
     {
+        return view('agents.agent_dashboard'); 
+    }
+
+    public function getAllData(){
         $hotels = Hotel::with('location')->get();
 
         foreach ($hotels as $hotel) {
             $hotel->image_url = url('hotels/' . basename($hotel->image));
         }
-
+        
         return response()->json([
             'success' => true,
             'data' => $hotels
