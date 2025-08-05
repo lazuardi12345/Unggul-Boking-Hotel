@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
+    // Tampilkan form login untuk masing-masing role
     public function showCustomerLoginForm()
     {
         return view('auth.login');
@@ -23,6 +24,7 @@ class LoginController extends Controller
         return view('admin.admin_login');
     }
 
+    // Proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -30,16 +32,14 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        // Cek apakah user bisa login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
             $user = Auth::user();
 
-            // Cek URL asal login
-            $currentUrl = $request->path(); // contoh: 'customer/login', 'admin/login', etc.
+            // Ambil URL asal login (contoh: customer/login)
+            $currentUrl = $request->path();
 
-            // Validasi role berdasarkan URL
+            // Cek kecocokan role dengan URL login
             if (
                 (str_starts_with($currentUrl, 'customer') && $user->role !== 'customer') ||
                 (str_starts_with($currentUrl, 'admin') && $user->role !== 'admin') ||
@@ -49,7 +49,7 @@ class LoginController extends Controller
                 abort(Response::HTTP_FORBIDDEN, 'Forbidden: Anda tidak memiliki akses dari URL ini.');
             }
 
-            // Redirect sesuai role
+            // Arahkan sesuai role
             return match ($user->role) {
                 'admin'    => redirect()->route('admin-dashboard'),
                 'agent'    => redirect()->route('agent-dashboard'),
@@ -61,12 +61,13 @@ class LoginController extends Controller
         return back()->with('error', 'Email atau password salah.')->withInput();
     }
 
+    // Proses logout
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('user-selection');
+        return redirect()->route('user-selection'); // halaman pemilihan login
     }
 }

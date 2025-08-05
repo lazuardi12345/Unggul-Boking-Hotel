@@ -17,6 +17,7 @@ $recentBookings = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agent Dashboard - Hotel Booking</title>
     <link rel="stylesheet" href="/assets/css/agent_dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -178,73 +179,73 @@ $recentBookings = [
             </section>
 
             <!-- Add Hotel Section -->
-            <section id="add-hotel" class="content-section" style="display:none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-hotel"></i> Tambah Hotel Baru</h2>
-                    <p class="section-subtitle">Lengkapi informasi hotel yang akan ditambahkan ke sistem.</p>
+           <section id="add-hotel" class="content-section" style="display:none;">
+    <div class="section-header">
+        <h2><i class="fas fa-hotel"></i> Tambah Hotel Baru</h2>
+        <p class="section-subtitle">Lengkapi informasi hotel yang akan ditambahkan ke sistem.</p>
+    </div>
+    
+    <div class="form-container">
+        <form id="addHotelForm" enctype="multipart/form-data">
+            @csrf
+            <div class="form-grid">
+                <div class="form-group">
+                    <label><i class="fas fa-building"></i> Nama Hotel</label>
+                    <input type="text" name="name" placeholder="Masukkan nama hotel" required>
                 </div>
-                
-                <div class="form-container">
-                    <form class="add-hotel-form" id="addHotelForm" action="save_hotel.php" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label><i class="fas fa-building"></i> Nama Hotel</label>
-                                <input type="text" name="hotel_name" placeholder="Masukkan nama hotel" required aria-describedby="hotel-name-help">
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-map-marker-alt"></i> Lokasi</label>
-                                <input type="text" name="location" placeholder="Masukkan lokasi hotel" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <label><i class="fas fa-align-left"></i> Deskripsi</label>
-                                <textarea name="description" placeholder="Deskripsi hotel, fasilitas, dan informasi penting lainnya" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-star"></i> Rating</label>
-                                <select name="rating" required>
-                                    <option value="">Pilih rating</option>
-                                    <option value="1">1 Bintang</option>
-                                    <option value="2">2 Bintang</option>
-                                    <option value="3">3 Bintang</option>
-                                    <option value="4">4 Bintang</option>
-                                    <option value="5">5 Bintang</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-phone"></i> Nomor Telepon</label>
-                                <input type="tel" name="phone" placeholder="Nomor telepon hotel">
-                            </div>
-                            <div class="form-group full-width">
-                                <label><i class="fas fa-image"></i> Gambar Hotel</label>
-                                <div class="file-upload-container">
-                                    <input type="file" name="hotel_image" accept="image/*" required id="hotelImage">
-                                    <label for="hotelImage" class="file-upload-label">
-                                        <i class="fas fa-cloud-upload-alt"></i>
-                                        <span>Pilih gambar hotel</span>
-                                        <small>Format: JPG, PNG, GIF (Max: 5MB)</small>
-                                    </label>
-                                </div>
-                                <div id="imagePreview" class="image-preview" style="display:none;">
-                                    <img src="" alt="Preview" id="previewImg">
-                                    <button type="button" id="removeImage" class="remove-image">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn-secondary" onclick="resetForm()">
-                                <i class="fas fa-undo"></i> Reset
-                            </button>
-                            <button type="submit" class="btn-primary" data-tooltip="Simpan hotel (Ctrl+S)">
-                                <i class="fas fa-save"></i> Tambah Hotel
-                            </button>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> ID Lokasi</label>
+                    <input type="number" name="location_id" placeholder="Masukkan ID lokasi (sementara)" required>
                 </div>
-                <div id="formMessage" class="form-message"></div>
-            </section>
+                <div class="form-group full-width">
+                    <label><i class="fas fa-align-left"></i> Fasilitas (pisahkan dengan koma)</label>
+                    <input type="text" name="facilities" placeholder="WiFi, Parkir, Kolam Renang" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-star"></i> Rating</label>
+                    <select name="rating" required>
+                        <option value="">Pilih rating</option>
+                        <option value="1">1 Bintang</option>
+                        <option value="2">2 Bintang</option>
+                        <option value="3">3 Bintang</option>
+                        <option value="4">4 Bintang</option>
+                        <option value="5">5 Bintang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-money-bill"></i> Harga</label>
+                    <input type="number" name="price" placeholder="Harga per malam (contoh: 500000)" required>
+                </div>
+                <div class="form-group full-width">
+                    <label><i class="fas fa-image"></i> Gambar Hotel</label>
+                    <div class="file-upload-container">
+                        <input type="file" name="image" accept="image/*" required id="hotelImage">
+                        <label for="hotelImage" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Pilih gambar hotel</span>
+                        </label>
+                    </div>
+                    <div id="imagePreview" class="image-preview" style="display:none;">
+                        <img src="" alt="Preview" id="previewImg">
+                        <button type="button" id="removeImage" class="remove-image">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="reset" class="btn-secondary">
+                    <i class="fas fa-undo"></i> Reset
+                </button>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-save"></i> Tambah Hotel
+                </button>
+            </div>
+        </form>
+    </div>
+    <div id="formMessage" class="form-message"></div>
+</section>
+
 
             <!-- Manage Hotels Section -->
             <section id="manage-hotels" class="content-section" style="display:none;">
@@ -1032,5 +1033,67 @@ $recentBookings = [
             });
         }
     </script>
+
+    <script>
+document.getElementById('hotelImage').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById('previewImg').src = e.target.result;
+        document.getElementById('imagePreview').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+});
+
+document.getElementById('removeImage').addEventListener('click', function() {
+    const input = document.getElementById('hotelImage');
+    input.value = '';
+    document.getElementById('imagePreview').style.display = 'none';
+});
+</script>
+<script>
+document.getElementById('addHotelForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Split fasilitas by koma (jika diketik manual)
+    const fasilitasInput = form.querySelector('input[name="facilities"]').value;
+    const fasilitasArray = fasilitasInput.split(',').map(item => item.trim());
+
+    // Hapus field facilities lama dan tambahkan array yang sesuai
+    formData.delete('facilities');
+    fasilitasArray.forEach(fac => formData.append('facilities[]', fac));
+
+    fetch('/api/hotels', {
+        method: 'POST',
+        headers: {
+    'Accept': 'application/json',
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+},
+
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        const msg = document.getElementById('formMessage');
+        if (data.success) {
+            msg.innerHTML = `<p class="success">${data.message}</p>`;
+            form.reset();
+            document.getElementById('imagePreview').style.display = 'none';
+        } else {
+            msg.innerHTML = `<p class="error">Gagal: ${data.message || 'Periksa data Anda.'}</p>`;
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        document.getElementById('formMessage').innerHTML = `<p class="error">Terjadi kesalahan saat mengirim data.</p>`;
+    });
+});
+</script>
+
 </body>
 </html> 

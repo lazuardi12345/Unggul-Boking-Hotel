@@ -31,9 +31,9 @@ Route::post('/customer/login', [LoginController::class, 'login'])->name('custome
 
 
 // Agent View
-// Route::get('/agent/dashboard', function () {
-//     return view('agents.agent_dashboard'); // pastikan ada file resources/views/profile.blade.php
-// })->name('agent-dashboard');
+Route::get('/agent/dashboard', function () {
+    return view('agents.agent_dashboard'); // pastikan ada file resources/views/profile.blade.php
+})->name('agent-dashboard');
 Route::get('admin/agent/dashboard/data', [HotelController::class, 'getAllData']);
 Route::resource('admin/agent/dashboard', HotelController::class);
 
