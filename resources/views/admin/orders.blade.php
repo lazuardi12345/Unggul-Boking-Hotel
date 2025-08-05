@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders Management - Admin</title>
-    <link rel="stylesheet" href="orders.css">
+    <link rel="stylesheet" href="/assets/css/orders.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
     <div class="orders-container">
         <header class="orders-header">
             <h2>Orders Management</h2>
-            <a href="admin_dashboard.php" style="display:inline-block;margin-top:10px;padding:8px 18px;background:#1976d2;color:#fff;border-radius:6px;text-decoration:none;font-weight:500;font-family:'Poppins',sans-serif;font-size:1rem;transition:background 0.2s;">&larr; Kembali</a>
+            <a href="{{ route('admin-dashboard') }}" style="display:inline-block;margin-top:10px;padding:8px 18px;background:#1976d2;color:#fff;border-radius:6px;text-decoration:none;font-weight:500;font-family:'Poppins',sans-serif;font-size:1rem;transition:background 0.2s;">&larr; Kembali</a>
         </header>
         <main class="orders-main">
             <?php if ($edit_data): ?>

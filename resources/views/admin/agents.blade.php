@@ -130,7 +130,7 @@ $agents = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agents</title>
-    <link rel="stylesheet" href="agents.css">
+    <link rel="stylesheet" href="/assets/css/agents.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -138,7 +138,7 @@ $agents = [
 <body>
     <header class="header">
         <a href="#" class="logo">
-            <img src="images/logo.png" alt="Company Logo"> Unggul Hotel Booking
+            <img src="/assets/img/logo.png" alt="Company Logo"> Unggul Hotel Booking
         </a>
         <nav class="navbar">
             <a href="index.php">Beranda</a>

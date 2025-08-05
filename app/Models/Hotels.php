@@ -11,7 +11,7 @@ class Hotels extends Model
         'description',
         'location',
         'price',
-        'image',
+        'hotel_image',
         'rating',
      ];
 }

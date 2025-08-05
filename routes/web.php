@@ -110,7 +110,7 @@ Route::get('admin/orders', function () {
 })->name('admin-orders');
 
 Route::get('admin/agents', function () {
-    return view('admin.agents'); // pastikan ada file resources/views/profile.blade.php
+    return view('admin.admin_agents'); // pastikan ada file resources/views/profile.blade.php
 })->name('admin-agents');
 
 Route::get('/agents', function () {

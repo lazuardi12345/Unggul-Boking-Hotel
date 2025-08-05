@@ -38,7 +38,7 @@ $recentBookings = [
             </div>
             <div class="user-profile">
                 <img src="/assets/img/profil.jpg" alt="Profile" class="profile-img">
-                <span class="user-name">Agent Name</span>
+                <span class="user-name">{{ auth()->user()->full_name }}</span>
             </div>
             <a href="{{route('user-selection')}}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
@@ -186,6 +186,7 @@ $recentBookings = [
                 
                 <div class="form-container">
                     <form class="add-hotel-form" id="addHotelForm" action="save_hotel.php" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-grid">
                             <div class="form-group">
                                 <label><i class="fas fa-building"></i> Nama Hotel</label>

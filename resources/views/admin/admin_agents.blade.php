@@ -138,7 +138,7 @@ if (isset($_GET['edit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Agents - Unggul Booking Hotel</title>
-    <link rel="stylesheet" href="admin_agents.css">
+    <link rel="stylesheet" href="/assets/css/admin_agents.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -150,10 +150,10 @@ if (isset($_GET['edit'])) {
             </div>
             <nav class="sidebar-menu">
                 <ul>
-                    <li><a href="admin_dashboard.php" style="color:inherit;text-decoration:none;"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li><a href="admin_properties.php" style="color:inherit;text-decoration:none;"><i class="fa fa-building"></i> Property Selection</a></li>
-                    <li><a href="website_setting.php" style="color:inherit;text-decoration:none;"><i class="fa fa-cog"></i> Website Setting</a></li>
-                    <li><a href="orders.php" style="color:inherit;text-decoration:none;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
+                    <li><a href="{{route('admin-dashboard')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="{{route('admin-properties')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-building"></i> Property Selection</a></li>
+                    <li><a href="{{route('admin-website-setting')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-cog"></i> Website Setting</a></li>
+                    <li><a href="{{route('admin-orders')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
                     <li class="active"><a href="admin_agents.php" style="color:inherit;text-decoration:none;"><i class="fa fa-user"></i> Agent</a></li>
                 </ul>
             </nav>
@@ -208,7 +208,7 @@ if (isset($_GET['edit'])) {
                             <?php foreach ($agents as $i => $agent): ?>
                             <tr>
                                 <td><?= $i+1 ?></td>
-                                <td><img src="images/<?= $agent['image'] ?>" alt="<?= htmlspecialchars($agent['name']) ?>" class="agent-photo"></td>
+                                <td><img src="/assets/img/<?= $agent['image'] ?>" alt="<?= htmlspecialchars($agent['name']) ?>" class="agent-photo"></td>
                                 <td><?= htmlspecialchars($agent['name']) ?></td>
                                 <td><?= htmlspecialchars($agent['location']) ?></td>
                                 <td><?= htmlspecialchars($agent['phone']) ?></td>
