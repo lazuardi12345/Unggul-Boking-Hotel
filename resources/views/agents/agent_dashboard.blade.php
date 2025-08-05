@@ -27,7 +27,7 @@ $recentBookings = [
     <!-- Header -->
     <div class="agent-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+            <img src="/assets/img/logo.png" alt="Logo Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
             <span class="logo-fallback" style="display:none;font-weight:bold;font-size:1.3rem;">Hotel</span>
             <span>Agent Dashboard</span>
         </div>
@@ -37,7 +37,7 @@ $recentBookings = [
                 <span class="notification-badge" aria-label="3 notifikasi baru">3</span>
             </div>
             <div class="user-profile">
-                <img src="images/profil.jpg" alt="Profile" class="profile-img">
+                <img src="/assets/img/profil.jpg" alt="Profile" class="profile-img">
                 <span class="user-name">Agent Name</span>
             </div>
             <a href="{{route('user-selection')}}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
