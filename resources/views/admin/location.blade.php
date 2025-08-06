@@ -145,17 +145,14 @@ if (isset($_GET['edit'])) {
                 <ul>
                     <li><a href="{{route('admin-dashboard')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
                     <li class="active"><i class="fa fa-building"></i> Property Selection</li>
-                    <li><i class="fa fa-cog"></i> Website Setting</li>
-                    <li><i class="fa fa-shopping-cart"></i> Orders</li>
-                    <li><i class="fa fa-user"></i> Agent</li>
+                    <li><a href = "{{route('admin-website-setting')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-cog"></i> Website Setting</a></li>
+                    <li><a href = "{{route('admin-orders')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
+                    <li><a href = "{{route('admin-agents')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-user"></i> Agent</li>
                 </ul>
             </nav>
         </aside>
         <main class="main-content">
-            <header class="main-header">
-                <img src="/assets/img/logo.png" alt="Logo" class="logo">
-                <span class="brand-title">Unggul Booking Hotel</span>
-            </header>
+            @include('admin.header.layout')
             <section class="location-section">
                 <div class="location-header">
                     <h2>View Locations</h2>

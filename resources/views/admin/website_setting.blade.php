@@ -149,7 +149,7 @@ $timezones = [
     <?php endif; ?>
 </head>
 <body>
-    <a href="admin_dashboard.php" class="back-button"><span class="material-icons">arrow_back</span> Kembali ke Dashboard</a>
+    <a href="{{route('admin-dashboard')}}" class="back-button"><span class="material-icons">arrow_back</span> Kembali ke Dashboard</a>
     <div class="setting-main-wrapper">
         <div class="setting-card">
             <h2 class="setting-title"><span class="material-icons icon-title">settings</span> Website Setting</h2>
