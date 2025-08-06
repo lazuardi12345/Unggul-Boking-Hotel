@@ -21,6 +21,17 @@ Route::post('/admin/login', [LoginController::class, 'login'])->name('admin-logi
 Route::get('/register/admin', [RegisterController::class, 'showAdminForm'])->name('admin-register');
 Route::post('/register/admin', [RegisterController::class, 'registerAdmin'])->name(name:'admin-register.store');
 
+Route::get('/admin/sidebar', function () {
+    return view('admin.sidebar.sidebar-main'); // pastikan ada file resources/views/profile.blade.php
+})->name('admin-sidebar');
+
+Route::get('/admin/properties', function () {
+    return view('admin.admin_properties'); // pastikan ada file resources/views/profile.blade.php
+})->name('admin-properties');
+
+Route::get('/admin/website-setting', function () {
+    return view('admin.website_setting'); // pastikan ada file resources/views/profile.blade.php
+})->name('admin-website-setting');
 
 // Customer View
 Route::get('/register/customer', [RegisterController::class, 'showCustomerForm'])->name('customer-register');
@@ -94,8 +105,6 @@ Route::get('/layanan', function () {
 Route::get('/properties', function () {
     return view('main.properties'); // pastikan ada file resources/views/profile.blade.php
 })->name('properties');
-
-Route::get('admin/properties',)->name('admin-properties');
 
 Route::get('admin/location', function () {
     return view('admin.location'); // pastikan ada file resources/views/profile.blade.php

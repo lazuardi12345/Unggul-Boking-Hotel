@@ -25,8 +25,8 @@ $default_settings = [
     'welcome_message' => 'Selamat datang di Unggul Booking Hotel!',
     'primary_color' => '#2d89ef',
     'secondary_color' => '#f5f5f5',
-    'logo' => 'images/logo.png',
-    'favicon' => 'images/logo.png',
+    'logo' => '/assets/img/logo.png',
+    'favicon' => '/assets/img/logo.png',
     'meta_description' => 'Website booking hotel terbaik dan terpercaya.',
     'meta_keywords' => 'hotel, booking, unggul, travel',
     'instagram' => '',
@@ -137,7 +137,7 @@ $timezones = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Setting - Admin Panel</title>
-    <link rel="stylesheet" href="website_setting.css">
+    <link rel="stylesheet" href="/assets/css/website_setting.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/png" id="faviconTag" href="<?php echo $settings['favicon']; ?>">
@@ -149,7 +149,7 @@ $timezones = [
     <?php endif; ?>
 </head>
 <body>
-    <a href="admin_dashboard.php" class="back-button"><span class="material-icons">arrow_back</span> Kembali ke Dashboard</a>
+    <a href="{{route('admin-dashboard')}}" class="back-button"><span class="material-icons">arrow_back</span> Kembali ke Dashboard</a>
     <div class="setting-main-wrapper">
         <div class="setting-card">
             <h2 class="setting-title"><span class="material-icons icon-title">settings</span> Website Setting</h2>

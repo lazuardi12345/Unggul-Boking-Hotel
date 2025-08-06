@@ -1,0 +1,1 @@
+<li><a href="{{route('admin-agents')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%"><i class="fa fa-user"></i> Agent</a></li>
