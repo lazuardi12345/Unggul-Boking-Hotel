@@ -95,7 +95,6 @@ Route::get('/properties', function () {
     return view('main.properties'); // pastikan ada file resources/views/profile.blade.php
 })->name('properties');
 
-Route::get('admin/properties',)->name('admin-properties');
 
 Route::get('admin/location', function () {
     return view('admin.location'); // pastikan ada file resources/views/profile.blade.php
@@ -108,6 +107,10 @@ Route::get('admin/website-setting', function () {
 Route::get('admin/orders', function () {
     return view('admin.orders'); // pastikan ada file resources/views/profile.blade.php
 })->name('admin-orders');
+
+Route::get('admin/properties', function () {
+    return view('admin.admin_properties'); // pastikan ada file resources/views/profile.blade.php
+})->name('admin-properties');
 
 Route::get('admin/agents', function () {
     return view('admin.admin_agents'); // pastikan ada file resources/views/profile.blade.php
