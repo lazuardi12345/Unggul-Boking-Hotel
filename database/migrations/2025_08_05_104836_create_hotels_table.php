@@ -17,7 +17,7 @@ return new class extends Migration
     $table->unsignedBigInteger('location_id');
     $table->integer('price');
     $table->string('image');
-    $table->float('rating', 2, 1);
+    $table->float('rating', 2,);
     $table->json('facilities');
     $table->timestamps();
 

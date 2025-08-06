@@ -1,8 +1,8 @@
 <?php
 // admin_properties.php
 // Dummy data for demonstration (replace with DB in production)
+?> 
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,35 +34,55 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel): ?>
-                <tr>
-                    <td><img src="images/<?php echo $hotel['image']; ?>" alt="<?php echo $hotel['name']; ?>" class="hotel-thumb"></td>
-                    <td><?php echo $hotel['name']; ?></td>
-                    <td><?php echo $hotel['location']; ?></td>
-                    <td>Rp. <?php echo number_format($hotel['price'], 0, ',', '.'); ?></td>
-                    <td><?php echo $hotel['rating']; ?></td>
-                    <td>
-                        <ul>
-                        <?php foreach ($hotel['facilities'] as $f): ?>
-                            <li><?php echo $f; ?></li>
+                <?php if (!empty($hotels)): ?>
+                        <?php foreach ($hotels as $hotel): ?>
+                            <tr>
+                                <td>
+                                    <img src="images/<?php echo htmlspecialchars($hotel['image']); ?>" alt="<?php echo htmlspecialchars($hotel['name']); ?>" class="hotel-thumb">
+                                </td>
+                                <td><?php echo htmlspecialchars($hotel['name']); ?></td>
+                                <td><?php echo htmlspecialchars($hotel['location']); ?></td>
+                                <td>Rp. <?php echo number_format($hotel['price'] ?? 0, 0, ',', '.'); ?></td>
+                                <td><?php echo htmlspecialchars($hotel['rating']); ?></td>
+                                <td>
+                                    <ul>
+                                        <?php if (!empty($hotel['facilities']) && is_array($hotel['facilities'])): ?>
+                                            <?php foreach ($hotel['facilities'] as $f): ?>
+                                                <li><?php echo htmlspecialchars($f); ?></li>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <li>Tidak ada fasilitas</li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <?php if (!empty($hotel['rooms']) && is_array($hotel['rooms'])): ?>
+                                            <?php foreach ($hotel['rooms'] as $idx => $room): ?>
+                                                <li>
+                                                    <?php echo htmlspecialchars($room['type']) . ': ' . htmlspecialchars($room['count']); ?>
+                                                    <button class="edit-btn" style="margin-left:8px;padding:2px 10px;font-size:0.9em;"
+                                                        onclick="showEditForm('<?php echo $hotel['id']; ?>', <?php echo $idx; ?>, '<?php echo htmlspecialchars($room['type'], ENT_QUOTES); ?>', <?php echo $room['count']; ?>)">
+                                                        <i class="fa fa-edit"></i> Edit
+                                                    </button>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <li>Tidak ada kamar</li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <button class="add-btn" onclick="showAddRoomForm('<?php echo $hotel['id']; ?>')">
+                                        <i class="fa fa-plus"></i> Add Room
+                                    </button>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                        <?php foreach ($hotel['rooms'] as $idx => $room): ?>
-                            <li>
-                                <?php echo $room['type'] . ': ' . $room['count']; ?>
-                                <button class="edit-btn" style="margin-left:8px;padding:2px 10px;font-size:0.9em;" onclick="showEditForm(<?php echo $hotel['id']; ?>, <?php echo $idx; ?>, '<?php echo htmlspecialchars($room['type'], ENT_QUOTES); ?>', <?php echo $room['count']; ?>)"><i class="fa fa-edit"></i> Edit</button>
-                            </li>
-                        <?php endforeach; ?>
-                        </ul>
-                    </td>
-                    <td>
-                        <button class="add-btn" onclick="showAddRoomForm(<?php echo $hotel['id']; ?>)"><i class="fa fa-plus"></i> Add Room</button>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="8">Data hotel belum tersedia.</td></tr>
+                    <?php endif; ?>
+
             </tbody>
         </table>
 
@@ -123,7 +143,7 @@
     const roomsStatusChart = new Chart(ctxStatus, {
         type: 'bar',
         data: {
-            labels: <?php echo json_encode($hotel_labels); ?>,
+            labels: <?php echo json_encode($hotel_labels); ?>
             datasets: [
                 {
                     label: 'Tersedia',
