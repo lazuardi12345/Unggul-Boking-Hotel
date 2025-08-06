@@ -160,7 +160,7 @@ if (isset($_GET['edit'])) {
         </aside>
         <main class="main-content">
             <header class="main-header">
-                <img src="images/logo.png" alt="Logo" class="logo">
+                <img src="/assets/img/logo.png" alt="Logo" class="logo">
                 <span class="brand-title">Unggul Booking Hotel</span>
             </header>
             <section class="agent-section">

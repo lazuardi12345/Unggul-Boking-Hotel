@@ -292,13 +292,13 @@ $agents = [
                             const hotelCard = document.createElement('div');
                             hotelCard.classList.add('hotel-card');
                             hotelCard.innerHTML = `
-                                <img src="images/${hotel.image}" alt="${hotel.name}">
+                                <img src="/assets/img/${hotel.image}" alt="${hotel.name}">
                                 <h3>${hotel.name}</h3>
                                 <p><i class=\'bx bx-map\'></i> ${hotel.location}</p>
                                 <p><strong>${hotel.price}</strong></p>
                                 <div class="card-bottom">
                                     <div class="user-info">
-                                        <img src="images/${agent.image}" alt="${hotel.user}">
+                                        <img src="/assets/img/${agent.image}" alt="${hotel.user}">
                                         <span>${hotel.user}</span>
                                     </div>
                                     <button class="view-details-btn" data-hotel='${JSON.stringify(hotel)}' data-agent-name="${agent.name}">View Details</button>
