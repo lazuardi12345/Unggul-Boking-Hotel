@@ -50,6 +50,11 @@ Route::get('/', function () {
     return view('main.index');
 })->name('index');
 
+// Main View
+Route::get('/sidebar', function () {
+    return view('layouts.sidebar');
+})->name('sidebar');
+
 Route::get('/forgot-password', function () {
     return view('password.forget_password');
 })->name('password.request');
