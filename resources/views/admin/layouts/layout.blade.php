@@ -15,26 +15,7 @@
 </head>
 <body>
     <div class="admin-container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <span class="sidebar-title">Menu Admin</span>
-            </div>
-            <nav class="sidebar-menu">
-                <ul>
-                    <li class="active"><a href="{{route('admin-dashboard')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li class="has-submenu">
-                        <span><i class="fa fa-building"></i> Property Selection <i class="fa fa-chevron-down submenu-arrow"></i></span>
-                        <ul class="submenu">
-                            <li><a href="{{route('admin-location')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%">Location</a></li>
-                            <li><a href="{{route('admin-properties')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%">Property</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route('admin-website-setting')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%"><i class="fa fa-cog"></i> Website Setting</a></li>
-                    <li><a href="{{route('admin-orders')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%"><i class="fa fa-shopping-cart"></i> Orders</a></li>
-                    <li><a href="{{route('admin-agents')}}" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%"><i class="fa fa-user"></i> Agent</a></li>
-                </ul>
-            </nav>
-        </aside>
+        @include('admin.sidebar.layout')
         <main class="main-content">
             @include('admin.header.layout')
             <section class="dashboard-section">
