@@ -43,7 +43,7 @@
     </div>
     <!-- Back to Home Button -->
     <div style="width:100%;text-align:center;margin:30px 0 10px 0;">
-        <a href="index.php" style="display:inline-block;padding:12px 32px;background:#007bff;color:#fff;border-radius:6px;text-decoration:none;font-size:1.1em;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Kembali ke Halaman Utama</a>
+        <a href="{{route('index')}}" style="display:inline-block;padding:12px 32px;background:#007bff;color:#fff;border-radius:6px;text-decoration:none;font-size:1.1em;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:background 0.2s;">Kembali ke Halaman Utama</a>
     </div>
     <!-- Chart.js Mini Graphs Script -->
     <script>
@@ -104,7 +104,7 @@
             }]
         },
         options: {
-            pli{ legend: { display: false } },
+            plugins: { legend: { display: false } },
             scales: {
                 x: { display: true },
                 y: { display: true, beginAtZero: true, precision:0 }
