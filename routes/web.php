@@ -134,9 +134,9 @@ Route::get('admin/orders', function () {
     return view('admin.orders'); // pastikan ada file resources/views/profile.blade.php
 })->name('admin-orders');
 
-Route::get('admin/agents', function () {
-    return view('admin.admin_agents'); // pastikan ada file resources/views/profile.blade.php
-})->name('admin-agents');
+// Route::get('admin/agents', function () {
+//     return view('admin.admin_agents'); // pastikan ada file resources/views/profile.blade.php
+// })->name('admin-agents');
 
 Route::get('/agents', function () {
     return view('main.agents'); // pastikan ada file resources/views/profile.blade.php

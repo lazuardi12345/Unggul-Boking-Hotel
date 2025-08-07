@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $agents[] = $new_agent;
         }
         $_SESSION['agents'] = $agents;
-        header('Location: admin_agents.php');
+        header('Location: admin.admin_agents');
         exit;
     }
 }
@@ -119,7 +119,7 @@ if (isset($_GET['delete'])) {
     if (isset($agents[$del])) {
         array_splice($agents, $del, 1);
         $_SESSION['agents'] = $agents;
-        header('Location: admin_agents.php');
+        header('Location: admin.admin_agents');
         exit;
     }
 }
@@ -154,7 +154,7 @@ if (isset($_GET['edit'])) {
                     <li><a href="{{route('admin-properties')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-building"></i> Property Selection</a></li>
                     <li><a href="{{route('admin-website-setting')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-cog"></i> Website Setting</a></li>
                     <li><a href="{{route('admin-orders')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
-                    <li class="active"><a href="admin_agents.php" style="color:inherit;text-decoration:none;"><i class="fa fa-user"></i> Agent</a></li>
+                    <li class="active"><a href="{{route('admin-agents')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-user"></i> Agent</a></li>
                 </ul>
             </nav>
         </aside>
@@ -231,7 +231,7 @@ function showForm() {
     document.getElementById('agent-form-container').style.display = 'block';
 }
 function hideForm() {
-    window.location.href = 'admin_agents.php';
+    window.location.href = '{{route('admin-agents')}}';
 }
 </script>
 </html> 
