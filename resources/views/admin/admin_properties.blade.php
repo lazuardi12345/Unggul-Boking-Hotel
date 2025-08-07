@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="admin-properties-container">
-        <a href="admin_dashboard.php" class="back-btn" style="display:inline-block;margin-bottom:18px;background:#1e3c72;color:#fff;padding:8px 20px;border-radius:5px;text-decoration:none;font-weight:600;transition:background 0.2s;"><i class="fa fa-arrow-left"></i> Kembali</a>
+        <a href="{{route('admin-dashboard')}}" class="back-btn" style="display:inline-block;margin-bottom:18px;background:#1e3c72;color:#fff;padding:8px 20px;border-radius:5px;text-decoration:none;font-weight:600;transition:background 0.2s;"><i class="fa fa-arrow-left"></i> Kembali</a>
         <h1>Admin Property Management</h1>
         <?php if (!empty($msg)): ?>
             <div class="admin-msg"><?php echo $msg; ?></div>
@@ -38,7 +38,7 @@
                         <?php foreach ($hotels as $hotel): ?>
                             <tr>
                                 <td>
-                                    <img src="images/<?php echo htmlspecialchars($hotel['image']); ?>" alt="<?php echo htmlspecialchars($hotel['name']); ?>" class="hotel-thumb">
+                                    <img src="/assets/<?php echo htmlspecialchars($hotel['image']); ?>" alt="<?php echo htmlspecialchars($hotel['name']); ?>" class="hotel-thumb">
                                 </td>
                                 <td><?php echo htmlspecialchars($hotel['name']); ?></td>
                                 <td><?php echo htmlspecialchars($hotel['location']); ?></td>

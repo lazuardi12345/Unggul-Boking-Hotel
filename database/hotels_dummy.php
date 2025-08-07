@@ -8,7 +8,7 @@ return [
         "description" => "Hotel bintang 4 yang nyaman dengan lokasi strategis di pusat Jakarta. Dilengkapi dengan fasilitas modern dan pelayanan prima untuk tamu bisnis dan liburan.",
         "rating" => 4,
         "phone" => "+62-21-555-0123",
-        "image" => "images/HotelSantika.jpg",
+        "image" => "img/HotelSantika.jpg",
         "created_at" => "2024-01-10 09:30:00",
         "agent_id" => "agent_001",
         "status" => "active"
@@ -20,7 +20,7 @@ return [
         "description" => "Hotel mewah dengan pemandangan gunung yang indah. Cocok untuk acara pernikahan dan konferensi bisnis. Dilengkapi dengan spa dan kolam renang.",
         "rating" => 5,
         "phone" => "+62-22-555-0456",
-        "image" => "images/HotelContinental.jpg",
+        "image" => "img/HotelContinental.jpg",
         "created_at" => "2024-01-12 14:20:00",
         "agent_id" => "agent_001",
         "status" => "active"
@@ -32,7 +32,7 @@ return [
         "description" => "Resort mewah di tepi pantai dengan villa pribadi. Menawarkan pengalaman liburan eksklusif dengan layanan butler 24 jam dan restoran bintang Michelin.",
         "rating" => 5,
         "phone" => "+62-361-555-0789",
-        "image" => "images/HotelKempinski.jpg",
+        "image" => "img/HotelKempinski.jpg",
         "created_at" => "2024-01-14 11:15:00",
         "agent_id" => "agent_002",
         "status" => "active"
@@ -44,7 +44,7 @@ return [
         "description" => "Hotel bisnis modern dengan fasilitas meeting room lengkap. Ideal untuk konferensi dan acara perusahaan. Terletak di pusat bisnis Surabaya.",
         "rating" => 4,
         "phone" => "+62-31-555-0321",
-        "image" => "images/HotelNovotel.jpg",
+        "image" => "img/HotelNovotel.jpg",
         "created_at" => "2024-01-15 16:45:00",
         "agent_id" => "agent_002",
         "status" => "active"
@@ -56,7 +56,7 @@ return [
         "description" => "Hotel bersejarah dengan arsitektur kolonial yang megah. Menawarkan pengalaman menginap mewah dengan layanan tradisional yang autentik.",
         "rating" => 5,
         "phone" => "+65-6337-1886",
-        "image" => "images/raffles.jpg",
+        "image" => "img/raffles.jpg",
         "created_at" => "2024-01-16 10:30:00",
         "agent_id" => "agent_003",
         "status" => "active"
@@ -68,7 +68,7 @@ return [
         "description" => "Hotel nyaman dengan lokasi dekat Malioboro. Cocok untuk backpacker dan keluarga. Menawarkan tur budaya dan kuliner lokal.",
         "rating" => 3,
         "phone" => "+62-274-555-0654",
-        "image" => "images/fairfield.jpg",
+        "image" => "img/fairfield.jpg",
         "created_at" => "2024-01-17 13:20:00",
         "agent_id" => "agent_001",
         "status" => "active"
@@ -80,7 +80,7 @@ return [
         "description" => "Hotel dengan konsep eco-friendly di tengah perkebunan teh. Menawarkan pengalaman alam yang menenangkan dengan aktivitas outdoor.",
         "rating" => 4,
         "phone" => "+62-341-555-0987",
-        "image" => "images/spencer_green_hotel.jpg",
+        "image" => "img/spencer_green_hotel.jpg",
         "created_at" => "2024-01-18 09:15:00",
         "agent_id" => "agent_002",
         "status" => "active"
@@ -92,7 +92,7 @@ return [
         "description" => "Hotel bersejarah dengan arsitektur art deco yang indah. Terletak di pusat kota dengan akses mudah ke berbagai destinasi wisata.",
         "rating" => 4,
         "phone" => "+62-24-555-0123",
-        "image" => "images/The Phoneix Hotel.jpg",
+        "image" => "img/The Phoneix Hotel.jpg",
         "created_at" => "2024-01-19 15:30:00",
         "agent_id" => "agent_003",
         "status" => "active"
@@ -104,7 +104,7 @@ return [
         "description" => "Resort pantai dengan pemandangan laut yang menakjubkan. Ideal untuk liburan keluarga dan aktivitas air seperti snorkeling dan diving.",
         "rating" => 3,
         "phone" => "+62-721-555-0456",
-        "image" => "images/Hotel trikora beach.jpg",
+        "image" => "img/Hotel trikora beach.jpg",
         "created_at" => "2024-01-20 12:45:00",
         "agent_id" => "agent_001",
         "status" => "active"
@@ -116,7 +116,7 @@ return [
         "description" => "Hotel mewah dengan taman yang luas dan pemandangan Gunung Merapi. Menawarkan pengalaman menginap kerajaan dengan fasilitas modern.",
         "rating" => 5,
         "phone" => "+62-274-555-0789",
-        "image" => "images/royal-ambarukmo.jpg",
+        "image" => "img/royal-ambarukmo.jpg",
         "created_at" => "2024-01-21 08:20:00",
         "agent_id" => "agent_002",
         "status" => "active"
@@ -128,7 +128,7 @@ return [
         "description" => "Hotel bisnis modern dengan lokasi strategis di kawasan industri. Dilengkapi dengan fasilitas meeting dan business center.",
         "rating" => 4,
         "phone" => "+62-21-555-0321",
-        "image" => "images/Hotel aston bekasi.jpg",
+        "image" => "img/Hotel aston bekasi.jpg",
         "created_at" => "2024-01-22 14:10:00",
         "agent_id" => "agent_003",
         "status" => "active"
@@ -140,7 +140,7 @@ return [
         "description" => "Resort tropis dengan villa pribadi dan kolam renang infinity. Menawarkan spa tradisional Bali dan restoran dengan masakan lokal.",
         "rating" => 5,
         "phone" => "+62-361-555-0654",
-        "image" => "images/Hotel bali resort.jpg",
+        "image" => "img/Hotel bali resort.jpg",
         "created_at" => "2024-01-23 11:35:00",
         "agent_id" => "agent_001",
         "status" => "active"
