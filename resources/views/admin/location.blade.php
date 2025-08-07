@@ -147,8 +147,8 @@ if (isset($_GET['edit'])) {
                     @include('admin.sidebar.sidebar-admin-property-selection')
                     <!-- <li class="active"><i class="fa fa-building"></i> Property Selection</li> -->
                     <li><a href="{{route('admin-website-setting')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-cog"></i> Website Setting</a></li>
-                    <li><i class="fa fa-shopping-cart"></i> Orders</li>
-                    <li><i class="fa fa-user"></i> Agent</li>
+                    <li><a href="{{route('admin-orders')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
+                    <li><a href="{{route('admin-agents')}}" style="color:inherit;text-decoration:none;"><i class="fa fa-user"></i> Agent</a></li>
                 </ul>
             </nav>
         </aside>
@@ -193,10 +193,10 @@ if (isset($_GET['edit'])) {
                                 <td>
                                     <?php
                                     $img_web = '/assets/img/' . $hotel['image'];  // untuk src img
-                                        $img_server = __DIR__ . '/../public/assets/img/' . $hotel['image'];  // path di disk
+                                        $img_server = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/' . $hotel['image'];  // path di disk
 
                                         if (!file_exists($img_server)) {
-                                            $img_web = '/assets/img/default-hotel.jpg';
+                                            $img_web = '/assets/img/DefaultHotel.jpg';
                                         } 
                                     // $img_path = '/assets/img/' . $hotel['image']; 
                                     // if (!file_exists($img_path) || !is_file($img_path)) {
