@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Property Management</title>
     <link rel="stylesheet" href="/assets/css/admin_properties.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -61,10 +62,6 @@
                                             <?php foreach ($hotel['rooms'] as $idx => $room): ?>
                                                 <li>
                                                     <?php echo htmlspecialchars($room['type']) . ': ' . htmlspecialchars($room['count']); ?>
-                                                    <button class="edit-btn" style="margin-left:8px;padding:2px 10px;font-size:0.9em;"
-                                                        onclick="showEditForm('<?php echo $hotel['id']; ?>', <?php echo $idx; ?>, '<?php echo htmlspecialchars($room['type'], ENT_QUOTES); ?>', <?php echo $room['count']; ?>)">
-                                                        <i class="fa fa-edit"></i> Edit
-                                                    </button>
                                                 </li>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -73,6 +70,10 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <button class="edit-btn" style="margin-left:8px;padding:2px 10px;font-size:0.9em;"
+                                                        onclick="showEditForm('<?php echo $hotel['id']; ?>', <?php echo $idx; ?>, '<?php echo htmlspecialchars($room['type'], ENT_QUOTES); ?>', <?php echo $room['count']; ?>)">
+                                                        <i class="fa fa-edit"></i> Edit
+                                                    </button>
                                     <button class="add-btn" onclick="showAddRoomForm('<?php echo $hotel['id']; ?>')">
                                         <i class="fa fa-plus"></i> Add Room
                                     </button>
@@ -136,14 +137,13 @@
         <h2>Grafik Jumlah Kamar per Hotel</h2>
         <canvas id="roomsChart" width="300" height="120" style="margin-bottom:30px;"></canvas>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
     // Grafik Kamar Tersedia & Dipakai per Hotel
     const ctxStatus = document.getElementById('roomsStatusChart').getContext('2d');
     const roomsStatusChart = new Chart(ctxStatus, {
         type: 'bar',
         data: {
-            labels: <?php echo json_encode($hotel_labels); ?>
+            labels: <?php echo json_encode($hotel_labels); ?>,
             datasets: [
                 {
                     label: 'Tersedia',
