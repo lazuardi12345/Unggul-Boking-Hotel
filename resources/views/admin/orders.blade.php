@@ -1,45 +1,58 @@
 <?php
-// orders.php
-// Ambil data orders dari file JSON
-$ordersFile = 'orders_data.json';
+// Path relatif terhadap root public
+$ordersFile = 'assets/json/orders_data.json';
+
+// Ambil data dari file JSON
 $orders = file_exists($ordersFile) ? json_decode(file_get_contents($ordersFile), true) : [];
 
-// Tambah logic edit order
+// Cek apakah data berhasil dimuat
+$isJsonLoaded = !empty($orders);
+echo "<script>console.log(' JSON loaded:', " . json_encode($isJsonLoaded) . ");</script>";
+echo "<script>console.log(' Orders Data:', " . json_encode($orders, JSON_PRETTY_PRINT) . ");</script>";
+
+// Inisialisasi data edit
 $edit_data = null;
 $edit_index = -1;
-// Tambah logic delete order
+
+// Hapus order
 if (isset($_GET['delete'])) {
     $delete_index = intval($_GET['delete']);
     if (isset($orders[$delete_index])) {
         array_splice($orders, $delete_index, 1);
         file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT));
-        header('Location: orders.php');
+        header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
+
+// Ambil data untuk diedit
 if (isset($_GET['edit'])) {
     $edit_index = intval($_GET['edit']);
     if (isset($orders[$edit_index])) {
         $edit_data = $orders[$edit_index];
     }
 }
-// Simpan perubahan order
+
+// Simpan perubahan setelah diedit
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
     $edit_index = intval($_POST['edit_index']);
     if (isset($orders[$edit_index])) {
-        $orders[$edit_index]['customer'] = trim($_POST['customer']);
-        $orders[$edit_index]['hotel'] = trim($_POST['hotel']);
-        $orders[$edit_index]['checkin'] = $_POST['checkin'];
-        $orders[$edit_index]['checkout'] = $_POST['checkout'];
-        $orders[$edit_index]['status'] = trim($_POST['status']);
-        $orders[$edit_index]['total'] = trim($_POST['total']);
-        $orders[$edit_index]['hotel_image'] = $_POST['hotel_image'];
+        $orders[$edit_index] = [
+            'customer'     => trim($_POST['customer']),
+            'hotel'        => trim($_POST['hotel']),
+            'checkin'      => $_POST['checkin'],
+            'checkout'     => $_POST['checkout'],
+            'status'       => trim($_POST['status']),
+            'total'        => trim($_POST['total']),
+            'hotel_image'  => 'assets/img/' . basename($_POST['hotel_image']),
+        ];
         file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT));
-        header('Location: orders.php');
+        header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
                         <select name="hotel_image" required>
                             <option value="">- Pilih Gambar -</option>
                             <?php
-                            $imageFiles = is_dir('images') ? array_filter(scandir('images'), function($f) {
+                            $imageFiles = is_dir('img') ? array_filter(scandir('img'), function($f) {
                                 return preg_match('/\.(jpg|jpeg|png)$/i', $f);
                             }) : [];
                             foreach ($imageFiles as $img) {
@@ -84,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
                     </label>
                     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px;">
                         <button type="submit" class="edit-btn" style="min-width:90px;">Simpan</button>
-                        <a href="orders.php" class="delete-btn" style="min-width:90px;text-align:center;">Batal</a>
+                        <a href="{{route('admin-orders')}}" class="delete-btn" style="min-width:90px;text-align:center;">Batal</a>
                     </div>
                 </form>
             </div>
@@ -134,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_index'])) {
                             }
                             ?>
                             <?php if ($hotelImage): ?>
-                                <img src="images/<?php echo htmlspecialchars($hotelImage); ?>" alt="Hotel Image" style="width:60px;height:40px;object-fit:cover;border-radius:6px;">
+                                <img src="/assets/img/<?php echo htmlspecialchars($hotelImage); ?>" alt="Hotel Image" style="width:60px;height:40px;object-fit:cover;border-radius:6px;">
                             <?php else: ?>
                                 <span style="color:#aaa;">-</span>
                             <?php endif; ?>

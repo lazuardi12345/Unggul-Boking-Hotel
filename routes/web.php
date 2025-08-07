@@ -47,6 +47,10 @@ Route::get('/admin/website-setting', function () {
     return view('admin.website_setting'); // pastikan ada file resources/views/profile.blade.php
 })->name('admin-website-setting');
 
+Route::get('/assets/json/order_data.json', function () {
+    return view('orders_data.json');
+});
+
 
 
 // Customer View
